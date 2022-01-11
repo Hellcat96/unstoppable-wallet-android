@@ -9,14 +9,17 @@ import android.util.AttributeSet
 import android.widget.SeekBar
 import androidx.appcompat.widget.AppCompatSeekBar
 
-class FeeSeekBar @JvmOverloads constructor(context: Context, private val attrs: AttributeSet? = null, defStyleAttr: Int = R.attr.seekBarStyle)
+class FeeSeekBar @JvmOverloads constructor(
+    context: Context,
+    private val config: SeekBarConfig = SeekBarConfig(context),
+    private val attrs: AttributeSet? = null,
+    defStyleAttr: Int = R.attr.seekBarStyle
+)
     : AppCompatSeekBar(context, attrs, defStyleAttr) {
 
     interface Listener {
         fun onSelect(value: Int)
     }
-
-    private val config = SeekBarConfig(context)
 
     private var isTracking = false
     private var listener: Listener? = null
